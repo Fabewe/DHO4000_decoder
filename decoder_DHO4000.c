@@ -1,5 +1,5 @@
+
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
 #include "estructuras.h"
 
@@ -72,9 +72,6 @@ int main(int argc, char** argv){
             printf("\n");
 
         }
-
-
-
     }else{
 
         //Verbose Header info:
@@ -95,26 +92,5 @@ int main(int argc, char** argv){
         }
     
     }
-
-
-    
-
-
-    
-
-    
-
-
-    
-
-
-    
-
-    
-
-    
-    
-
-
 
 }
