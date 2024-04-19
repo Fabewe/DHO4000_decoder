@@ -7,6 +7,8 @@ decoder_DHO4000.c -> Final version.
 
 /examples -> Directory with some binaries for testing.
 
+plot.sh -> Bash script for plotting the example on GNUplot.
+
 ## Compilation:
 `gcc decoder_DHO4000.c -o decoder`
 ## Usage:
