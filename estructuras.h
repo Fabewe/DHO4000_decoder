@@ -1,3 +1,7 @@
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 
 typedef struct fileHeader {
@@ -101,6 +105,38 @@ typedef struct waveDataHeader {
 
 }waveDataHeader;
 
+const char * waveTypes[] = {
+    "Unknown",
+    "Normal",
+    "Peak Detection",
+    "Average",
+    "Not Used",
+    "Not Used",
+    "Logic"
+};
+
+
+const char * xUns[] = {
+    "Unknown",
+    "Volts (V)",
+    "Seconds (s)",
+    "Constant",
+    "Amps (A)",
+    "Decibel (dB)",
+    "Hertz (Hz)"
+};
+
+const char * bufferType[] = {
+    "Unknown",
+    "Normal 32-bit float data",
+    "Maximum float data",
+    "Minimum float data",
+    "Digital unsigned 8-bit character data (for digital channels)"
+};
+
+
+
+
 
 void readFileHeader(fileHeader* FH,FILE* fichero){
 
@@ -178,8 +214,8 @@ void showFileHeader(fileHeader mainHeader){
 
             printf("Cookie : %c%c\n\t",mainHeader.cookie[0],mainHeader.cookie[1]);
             printf("Version : %#x,%#x\n\t",mainHeader.version[0],mainHeader.version[1]);
-            printf("File Size :%lld\n\t",mainHeader.fileSize);
-            printf("Number of Waveforms :%d\n\t",mainHeader.nWave);
+            printf("File Size : %lld\n\t",mainHeader.fileSize);
+            printf("Number of Waveforms : %d\n\t",mainHeader.nWave);
     printf("]\n");
 
 }
@@ -190,7 +226,7 @@ void showWaveHeader(waveHeader wHeader){
     printf("\nWave header [\n\t");
 
             printf("Header size : %d\n\t",wHeader.hSize);
-            printf("Waveform type : %d\n\t",wHeader.wType);
+            printf("Waveform type : %d - %s\n\t",wHeader.wType,waveTypes[wHeader.wType]);
             printf("Number of Waveform Buffers : %d\n\t",wHeader.nBuffers);
             printf("Number of Points : %d\n\t",wHeader.nPoints);
             printf("Count : %d\n\t",wHeader.Count);
@@ -198,8 +234,8 @@ void showWaveHeader(waveHeader wHeader){
             printf("X Display Origin : %f\n\t",wHeader.xDorigin);
             printf("X Increment : %f\n\t",wHeader.inc);
             printf("X Origin : %f\n\t",wHeader.xOrigin);
-            printf("X Units : %d\n\t",wHeader.xUnits);
-            printf("Y Units : %d\n\t",wHeader.yUnits);
+            printf("X Units : %d - %s\n\t",wHeader.xUnits,xUns[wHeader.xUnits]);
+            printf("Y Units : %d - %s\n\t",wHeader.yUnits,xUns[wHeader.yUnits]);
             printf("Date  : %s\n\t",wHeader.date);
             printf("Time : %s\n\t",wHeader.time);
             printf("Model %s\n\t",wHeader.model);
@@ -213,7 +249,7 @@ void showWaveDataHeader(waveDataHeader wdHeader){
     printf("\nWave Data header [\n\t");
 
             printf("Header size : %d\n\t",wdHeader.hSize);
-            printf("Buffer type : %d\n\t",wdHeader.bType);
+            printf("Buffer type : %d - %s\n\t",wdHeader.bType,bufferType[wdHeader.bType]);
             printf("Bytes Per Point : %d\n\t",wdHeader.bPoint);
             printf("Buffer Size : %lli\n\t",wdHeader.bSize);
     printf("]\n");
