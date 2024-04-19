@@ -10,7 +10,7 @@ decoder_DHO4000.c -> Final version.
 ## Compilation:
 `gcc decoder_DHO4000.c -o decoder`
 ## Usage:
-`./decoder <RigolBinary.bin> <optional character for csv output>`
+`./decoder <RigolBinary.bin> <-csv for csv output> `
 
 ## Output on file:
-`./decoder <RigolBinary.bin> <optional character for csv output> >> output.txt`
+`./decoder <RigolBinary.bin> <-csv for csv output> > output.txt`
